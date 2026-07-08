@@ -95,3 +95,19 @@ pwdConfirm.addEventListener(`input`, validatePwdConfirm);
 
 
 // --- FORM SUBMISSION ---
+form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Stop standard form submission
+
+    // Force a validation check on all fields
+    const isEmailValid = validateEmail();
+    const isCountryValid = validateCountry();
+    const isZipValid = validateZip();
+    const isPwdValid = validatePassword();
+    const isPwdConfirmValid = ValidatePwdConfirm();
+
+    // If ALL fields are valid, trigger the success!
+    if(isEmailValid && isCountryValid && isZipValid && isPwdValid && isPwdConfirmValid) {
+        alert('✋ High Five! Your form is perfectly validated and submitted.');
+        form.reset();
+    }
+});
